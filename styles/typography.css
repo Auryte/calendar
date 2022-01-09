@@ -1,0 +1,8 @@
+html {
+  font-size: var(--page-font-size);
+  font-family: var(--page-font);
+}
+
+.text-center {
+  text-align: center;
+}

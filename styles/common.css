@@ -1,0 +1,23 @@
+.container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: auto;
+}
+.side-view{
+  width: 100%;
+}
+.create-button{
+  cursor: pointer;
+}
+@media screen and (min-width: 1280px){
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: auto;
+    display: flex;
+  }
+  .side-view{
+    width: 35%;
+    padding: 20px 0 20px 20px ;
+  }
+  }

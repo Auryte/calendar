@@ -1,0 +1,204 @@
+.calendar {
+  display: grid;
+  row-gap: 0.5em;
+  padding: 1rem;
+  border: 1px solid var(--color-hover);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.calendar__header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1rem;
+}
+
+.calendar__nav-link {
+  display: inline-flex;
+  justify-content: center;
+  height: 1.25rem;
+  width: 1.25rem;
+  font-weight: 700;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.calendar__nav-link:hover {
+  background-color: var(--color-hover);
+}
+
+.calendar__weekdays,
+.calendar__days {
+  text-align: center;
+  display: grid;
+  row-gap: 0.5em;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar__days {
+  grid-template-rows: repeat(6, 1fr);
+}
+
+.calendar__week-day {
+  position: relative;
+  cursor: pointer;
+}
+
+.calendar__week-day:after {
+  font-size: 0.5em;
+  position: absolute;
+  content: attr(title);
+  bottom: -3em;
+  left: 0;
+  right: 0;
+  display: block;
+  background: var(--color-black);
+  color: white;
+  padding: 0.3em;
+  border-radius: var(--border-radius);
+  display: none;
+}
+
+.calendar__week-day:hover:after {
+  display: block;
+}
+
+.calendar__month-day {
+  font-size: 0.85em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  height: 40px;
+}
+
+.calendar__month-day.muted {
+  color: var(--color-muted);
+  user-select: none;
+}
+
+.calendar__month-day.active>.calendar__month-day__number {
+  display: inline-block;
+  height: 1.25rem;
+  width: 1.25rem;
+  color: var(--color-white);
+  border-radius: 50%;
+  background-color: var(--color-active);
+}
+
+.calendar__month-day__events {
+  display: flex;
+  justify-items: center;
+}
+
+.calendar__month-day__event {
+  display: flex;
+  margin: 0;
+  padding: 3px;
+}
+
+.calendar__month-day__event__dot {
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  margin: 1px;
+}
+
+.calendar__month-day__event__title {
+  display: none;
+}
+
+.calendar__month-day__event.meeting>.calendar__month-day__event__dot {
+  background-color: var(--color-event-meeting);
+}
+
+.calendar__month-day__event.call>.calendar__month-day__event__dot {
+  background-color: var(--color-event-call);
+}
+
+.calendar__month-day__event.out>.calendar__month-day__event__dot {
+  background-color: var(--color-event-out);
+}
+
+/* Hide subsequent events of same type */
+.calendar__month-day__event.meeting~.calendar__month-day__event.meeting,
+.calendar__month-day__event.call~.calendar__month-day__event.call,
+.calendar__month-day__event.out~.calendar__month-day__event.out {
+  display: none;
+}
+
+@media screen and (min-width: 1280px) {
+
+  /* DISABLE: Hide subsequent events of same type */
+  .calendar__month-day__event.meeting~.calendar__month-day__event.meeting,
+  .calendar__month-day__event.call~.calendar__month-day__event.call,
+  .calendar__month-day__event.out~.calendar__month-day__event.out {
+    display: flex;
+  }
+
+  .calendar {
+    width: 65%;
+    row-gap: 0;
+  }
+
+  .calendar__week-day {
+    border: 1px solid var(--color-light-grey);
+  }
+
+  .calendar__days {
+    row-gap: 0;
+  }
+
+  .calendar__month-day {
+    font-size: 0.85em;
+    align-items: flex-start;
+    height: 135px;
+    border: 1px solid var(--color-light-grey);
+  }
+
+  .calendar__month-day.active>.calendar__month-day__number {
+    display: inline-block;
+    height: 1.25rem;
+    width: 1.25rem;
+    color: var(--color-black);
+    border-radius: 50%;
+    background-color: var(--color-transparent);
+  }
+
+  .calendar__month-day__number {
+    margin-left: 85%;
+  }
+
+  .calendar__month-day__events {
+    flex-direction: column;
+    justify-items: left;
+
+    width: 100%;
+  }
+
+  .calendar__month-day__event {
+    justify-items: left;
+    align-items: center;
+    width: calc(100% - 6px);
+    margin: 0 3px;
+    cursor: pointer;
+  }
+
+  .calendar__month-day__event:hover {
+    background-color: var(--color-light-grey);
+  }
+
+  .calendar__month-day__event__title {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-align: left;
+  }
+
+  .calendar__month-day__event__dot {
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    margin: 5px;
+  }
+}

@@ -1,0 +1,19 @@
+.btn {
+  display: inline-block;
+  color: var(--color-white);
+  font-size: 0.8rem;
+  font-family: var(--page-font);
+  text-decoration: none;
+  padding: 0.4em 0.7em;
+  border: none;
+  /* box-shadow: 0 0 0 1px var(--color-black), 0 0 0 2px var(--color-white), 0 0 0 3px var(--color-black); */
+  /* box-shadow: 0 0 0 1px var(--color-grey); */
+  border-radius: var(--border-radius);
+  background-color: var(--color-active);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--color-active-hover);
+  box-shadow:  var(--shadow-sm);
+}
